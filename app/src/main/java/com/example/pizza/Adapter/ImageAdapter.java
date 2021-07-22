@@ -1,19 +1,13 @@
 package com.example.pizza.Adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.bumptech.glide.Glide;
-import com.example.pizza.Model.Image;
-import com.example.pizza.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 public class ImageAdapter extends PagerAdapter {
     Context context;

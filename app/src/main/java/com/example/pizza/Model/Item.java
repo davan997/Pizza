@@ -1,9 +1,9 @@
 package com.example.pizza.Model;
 
-public class Image {
+public class Item {
     String hinhanh;
 
-    public Image(String hinhanh) {
+    public Item(String hinhanh) {
         this.hinhanh = hinhanh;
     }
 

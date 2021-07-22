@@ -1,19 +1,17 @@
 package com.example.pizza.Model;
 
 public class Collection {
-    String collecturl;
+    int collect;
 
-    public Collection(String collecturl) {
-        this.collecturl = collecturl;
+    public int getCollect() {
+        return collect;
     }
 
-    public Collection(){}
-
-    public String getCollecturl() {
-        return collecturl;
+    public void setCollect(int collect) {
+        this.collect = collect;
     }
 
-    public void setCollecturl(String collecturl) {
-        this.collecturl = collecturl;
+    public Collection(int collect) {
+        this.collect = collect;
     }
 }
