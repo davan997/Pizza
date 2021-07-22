@@ -9,11 +9,11 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends PagerAdapter {
+public class BannerAdapter extends PagerAdapter {
     Context context;
     String[] imageurl;
 
-    public ImageAdapter(Context context, String[] imageurl) {
+    public BannerAdapter(Context context, String[] imageurl) {
         this.context = context;
         this.imageurl = imageurl;
     }

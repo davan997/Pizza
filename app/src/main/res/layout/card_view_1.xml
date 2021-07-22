@@ -13,7 +13,6 @@
             android:id="@+id/cardview1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/banner1"
             android:scaleType="centerCrop"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

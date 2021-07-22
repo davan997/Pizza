@@ -1,17 +1,17 @@
 package com.example.pizza.Model;
 
 public class Item {
-    String hinhanh;
+    int hinhanh;
 
-    public Item(String hinhanh) {
+    public Item(int hinhanh) {
         this.hinhanh = hinhanh;
     }
 
-    public String getHinhanh() {
+    public int getHinhanh() {
         return hinhanh;
     }
 
-    public void setHinhanh(String hinhanh) {
+    public void setHinhanh(int hinhanh) {
         this.hinhanh = hinhanh;
     }
 }

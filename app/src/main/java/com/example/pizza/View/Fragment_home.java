@@ -6,16 +6,20 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.pizza.Adapter.CollectionAdapter;
-import com.example.pizza.Adapter.ImageAdapter;
+import com.example.pizza.Adapter.BannerAdapter;
+import com.example.pizza.Adapter.ItemAdapter;
 import com.example.pizza.Model.Collection;
+import com.example.pizza.Model.Item;
 import com.example.pizza.R;
 
 import java.util.ArrayList;
@@ -27,14 +31,19 @@ public class Fragment_home extends Fragment {
 
     //banner
     ViewPager viewPager;
-    ImageAdapter imageAdapter;
-    String[] image;
+    BannerAdapter bannerAdapter;
+    String[] bannerurl;
     Timer timer;
 
     //collection
-    RecyclerView recyclerView;
+    RecyclerView recyclercollect;
     CollectionAdapter collectionAdapter;
     ArrayList<Collection> collectionArrayList;
+
+    //item
+    RecyclerView recycleritem;
+    ItemAdapter itemAdapter;
+    ArrayList<Item> itemArrayList;
 
     View view;
     @Override
@@ -42,25 +51,32 @@ public class Fragment_home extends Fragment {
         initview(inflater,container);
 
         //handle Banner
-        imageAdapter = new ImageAdapter(getActivity(),image);
-        viewPager.setAdapter(imageAdapter);
+        bannerAdapter = new BannerAdapter(getActivity(),bannerurl);
+        viewPager.setAdapter(bannerAdapter);
         autoslide();
 
         //handle collection
         collectionAdapter = new CollectionAdapter(getActivity());
         collectionAdapter.setData(collectionArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(collectionAdapter);
+        recyclercollect.setLayoutManager(linearLayoutManager);
+        recyclercollect.setAdapter(collectionAdapter);
 
+        //handle item
+        itemAdapter = new ItemAdapter(getActivity());
+        itemAdapter.setData(itemArrayList);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        recycleritem.setLayoutManager(gridLayoutManager);
+        recycleritem.setAdapter(itemAdapter);
         return view;
     }
 
     public void initview(@NonNull LayoutInflater inflater, ViewGroup container){
         view = inflater.inflate(R.layout.fragmenthome,container,false);
+
         //init banner
         viewPager = view.findViewById(R.id.containerbanner);
-        image = new String[]{
+        bannerurl = new String[]{
                 "https://i.ytimg.com/vi/ax-DC_N1M4c/maxresdefault.jpg",
                 "https://st4.depositphotos.com/14582236/30991/v/1600/depositphotos_309919246-stock-illustration-pepperoni-pizza-banner-ads.jpg",
                 "https://media.istockphoto.com/vectors/best-italian-pizza-banner-with-ribbon-tomato-cheese-mozzarella-flour-vector-id1253496654?k=6&m=1253496654&s=170667a&w=0&h=5R0zsi0x3_eVpzj2aVWy6MERKUbQeGGkKPHX_G0vKpE=",
@@ -69,12 +85,20 @@ public class Fragment_home extends Fragment {
         };
 
         //init collection
-        recyclerView = view.findViewById(R.id.recycleview);
+        recyclercollect = view.findViewById(R.id.recyclevcollect);
         collectionArrayList = new ArrayList<>();
         collectionArrayList.add(new Collection(R.drawable.collect1));
         collectionArrayList.add(new Collection(R.drawable.collect2));
         collectionArrayList.add(new Collection(R.drawable.collect3));
         collectionArrayList.add(new Collection(R.drawable.collect4));
+
+        //init item
+        recycleritem = view.findViewById(R.id.containerpizza);
+        itemArrayList = new ArrayList<>();
+        itemArrayList.add(new Item(R.drawable.collect1));
+        itemArrayList.add(new Item(R.drawable.collect2));
+        itemArrayList.add(new Item(R.drawable.collect3));
+        itemArrayList.add(new Item(R.drawable.collect4));
     }
     public void autoslide(){
         if(timer == null){
@@ -86,7 +110,7 @@ public class Fragment_home extends Fragment {
                         @Override
                         public void run() {
                             int currentimage = viewPager.getCurrentItem();
-                            int totalimage = image.length - 1;
+                            int totalimage = bannerurl.length - 1;
                             if(currentimage < totalimage){
                                 currentimage++;
                                 viewPager.setCurrentItem(currentimage);
