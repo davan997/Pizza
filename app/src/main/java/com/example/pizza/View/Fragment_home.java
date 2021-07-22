@@ -46,36 +46,31 @@ public class Fragment_home extends Fragment {
     ArrayList<Item> itemArrayList;
 
     View view;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initview(inflater,container);
-
-        //handle Banner
-        bannerAdapter = new BannerAdapter(getActivity(),bannerurl);
-        viewPager.setAdapter(bannerAdapter);
-        autoslide();
-
-        //handle collection
-        collectionAdapter = new CollectionAdapter(getActivity());
-        collectionAdapter.setData(collectionArrayList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        recyclercollect.setLayoutManager(linearLayoutManager);
-        recyclercollect.setAdapter(collectionAdapter);
-
-        //handle item
-        itemAdapter = new ItemAdapter(getActivity());
-        itemAdapter.setData(itemArrayList);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        recycleritem.setLayoutManager(gridLayoutManager);
-        recycleritem.setAdapter(itemAdapter);
+        initview(inflater, container);
         return view;
     }
 
-    public void initview(@NonNull LayoutInflater inflater, ViewGroup container){
-        view = inflater.inflate(R.layout.fragmenthome,container,false);
-
-        //init banner
+    public void initview(@NonNull LayoutInflater inflater, ViewGroup container) {
+        view = inflater.inflate(R.layout.fragmenthome, container, false);
+        recyclercollect = view.findViewById(R.id.recyclevcollect);
         viewPager = view.findViewById(R.id.containerbanner);
+        recycleritem = view.findViewById(R.id.containerpizza);
+
+        //handle collection
+        collectionArrayList = new ArrayList<>();
+        collectionAdapter = new CollectionAdapter(getActivity(),collectionArrayList);
+        recyclercollect.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+        recyclercollect.setAdapter(collectionAdapter);
+
+        //handle item
+        itemArrayList = new ArrayList<>();
+        itemAdapter = new ItemAdapter(getActivity(),itemArrayList);
+        recycleritem.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recycleritem.setAdapter(itemAdapter);
+        //init banner
         bannerurl = new String[]{
                 "https://i.ytimg.com/vi/ax-DC_N1M4c/maxresdefault.jpg",
                 "https://st4.depositphotos.com/14582236/30991/v/1600/depositphotos_309919246-stock-illustration-pepperoni-pizza-banner-ads.jpg",
@@ -85,23 +80,27 @@ public class Fragment_home extends Fragment {
         };
 
         //init collection
-        recyclercollect = view.findViewById(R.id.recyclevcollect);
-        collectionArrayList = new ArrayList<>();
         collectionArrayList.add(new Collection(R.drawable.collect1));
         collectionArrayList.add(new Collection(R.drawable.collect2));
         collectionArrayList.add(new Collection(R.drawable.collect3));
         collectionArrayList.add(new Collection(R.drawable.collect4));
+        collectionAdapter.notifyDataSetChanged();
+
 
         //init item
-        recycleritem = view.findViewById(R.id.containerpizza);
-        itemArrayList = new ArrayList<>();
         itemArrayList.add(new Item(R.drawable.collect1));
         itemArrayList.add(new Item(R.drawable.collect2));
         itemArrayList.add(new Item(R.drawable.collect3));
         itemArrayList.add(new Item(R.drawable.collect4));
+
+        //handle Banner
+        bannerAdapter = new BannerAdapter(getActivity(), bannerurl);
+        viewPager.setAdapter(bannerAdapter);
+        autoslide();
     }
-    public void autoslide(){
-        if(timer == null){
+
+    public void autoslide() {
+        if (timer == null) {
             timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
@@ -111,17 +110,16 @@ public class Fragment_home extends Fragment {
                         public void run() {
                             int currentimage = viewPager.getCurrentItem();
                             int totalimage = bannerurl.length - 1;
-                            if(currentimage < totalimage){
+                            if (currentimage < totalimage) {
                                 currentimage++;
                                 viewPager.setCurrentItem(currentimage);
-                            }
-                            else {
+                            } else {
                                 viewPager.setCurrentItem(0);
                             }
                         }
                     });
                 }
-            },1000 , 5000);
+            }, 1000, 5000);
         }
     }
 }

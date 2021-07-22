@@ -19,37 +19,28 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     Context context;
     List<Item> litem;
 
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context, List<Item> litem) {
         this.context = context;
-    }
-
-    public void setData(List<Item> item){
-        this.litem = item;
-        notifyDataSetChanged();
+        this.litem = litem;
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_view_2,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_view_2, parent, false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = litem.get(position);
-        if (item == null){
-            return;
-        }
+
         holder.imageView.setImageResource(item.getHinhanh());
     }
 
     @Override
     public int getItemCount() {
-        if (litem != null){
-            litem.size();
-        }
-        return 0;
+        return litem.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
