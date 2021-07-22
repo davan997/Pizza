@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/nocolor">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/containerbanner"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        app:cardCornerRadius="10dp"/>
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/containerbanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Collection"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/containerbanner"
+        android:id="@+id/seeall1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="See All"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview"
+        android:numColumns="4"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/seeall1"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/recycleview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Pizza"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/recycleview"
+        android:id="@+id/seeall2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="See All"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <GridView
+        android:id="@+id/gridcollection2"
+        android:numColumns="2"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/seeall2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

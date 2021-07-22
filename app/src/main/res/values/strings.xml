@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Pizza</string>
+    <string name="home">Trang Chủ</string>
+    <string name="heart">Yêu Thích</string>
+    <string name="cart">Giỏ Hàng</string>
+    <string name="notification">Thông Báo</string>
+    <string name="personal">Cá Nhân</string>
+</resources>
