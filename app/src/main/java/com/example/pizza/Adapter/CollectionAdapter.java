@@ -48,7 +48,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.co
     @Override
     public int getItemCount() {
         if (lcollection != null){
-            lcollection.size();
+            return lcollection.size();
         }
         return 0;
     }
