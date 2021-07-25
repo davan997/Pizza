@@ -8,7 +8,7 @@
         android:id="@+id/containerbanner"
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        app:cardCornerRadius="10dp"/>
+        android:layout_alignParentTop="true"/>
     <TextView
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
@@ -37,7 +37,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/seeall1"
         android:layout_width="wrap_content"
-        android:layout_height="125dp"/>
+        android:layout_height="125dp" />
     <TextView
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
@@ -65,6 +65,8 @@
         android:numColumns="2"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/seeall2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"/>
 </RelativeLayout>

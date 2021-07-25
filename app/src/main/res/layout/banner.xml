@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="25dp"
+    android:layout_margin="10dp">
     <ImageView
         android:id="@+id/containerimage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/banner1"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 </androidx.cardview.widget.CardView>
