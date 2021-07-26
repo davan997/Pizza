@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class Fragment_home extends Fragment {
 
     //banner
@@ -92,11 +91,36 @@ public class Fragment_home extends Fragment {
         //init item
         recycleritem = view.findViewById(R.id.containerpizza);
         itemArrayList = new ArrayList<>();
-        itemArrayList.add(new Item(R.drawable.pizza1));
-        itemArrayList.add(new Item(R.drawable.pizza2));
-        itemArrayList.add(new Item(R.drawable.pizza3));
-        itemArrayList.add(new Item(R.drawable.pizza4));
-        itemArrayList.add(new Item(R.drawable.pizza5));
+        itemArrayList.add(new Item(
+                "Pizza Rau Củ",
+                R.drawable.pizza1,
+                "Thanh nhẹ với ô liu đen tuyệt hảo, cà chua bi tươi ngon, nấm, thơm, bắp, bí ngòi và phô mai Mozzarella cho bạn bữa tiệc rau củ tròn vị",
+                "$12.42"));
+        itemArrayList.add(new Item(
+                "Pizza Hải Sản Sót Pesto",
+                R.drawable.pizza2,
+                "Pizza Hải Sản Xốt Pesto với hải sản (tôm, mực) nhân đôi cùng với nấm trên nền xốt Pesto đặc trưng, phủ phô mai Mozzarella từ New Zealand và quế tây.",
+                "$18.25"));
+        itemArrayList.add(new Item(
+                "Pizza Hải Sản Sốt Tiêu Đen",
+                R.drawable.pizza3,
+                "Tôm, mực và nấm trên nền xốt Pesto đặc trưng, phủ phô mai Mozzarella",
+                "$15.75"));
+        itemArrayList.add(new Item(
+                "Pizza Gà Lướng",
+                R.drawable.pizza4,
+                "Tôm, mực, thanh cua, hành tây, thơm phủ xốt tiêu đen thơm nóng và phô mai Mozzarella",
+                "$15.75"));
+        itemArrayList.add(new Item(
+                "Pizza Hawaiian",
+                R.drawable.pizza5,
+                "Phủ giăm bông và thơm ngọt dịu trên nền sốt cà chua truyền thống",
+                "$12.04"));
+        itemArrayList.add(new Item(
+                "Pizza Cá Ngừ",
+                R.drawable.pizza6,
+                "Mang hương vị biển cả nhẹ nhàng với cá ngừ, thanh cua, hành tây, thơm trên nền xốt Pesto",
+                "$12.04"));
     }
     public void autoslide() {
         if(timer == null){

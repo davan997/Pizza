@@ -11,7 +11,6 @@ import com.example.pizza.View.Fragment_heart;
 import com.example.pizza.View.Fragment_home;
 import com.example.pizza.View.Fragment_notification;
 import com.example.pizza.View.Fragment_personal;
-import com.example.pizza.View.SeachView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initview();
-        getSupportFragmentManager().beginTransaction().add(R.id.searchfr,new SeachView()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, new Fragment_home()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment_home()).commit();
         menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         selcetfrag = new Fragment_personal();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().add(R.id.container, selcetfrag).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, selcetfrag).commit();
                 return true;
             }
         });
