@@ -46,19 +46,20 @@ public class Fragment_home extends Fragment {
     ArrayList<Item> itemArrayList;
 
     View view;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initview(inflater,container);
+        initview(inflater, container);
 
         //handle Banner
-        bannerAdapter = new BannerAdapter(getActivity(),bannerurl);
+        bannerAdapter = new BannerAdapter(getActivity(), bannerurl);
         viewPager.setAdapter(bannerAdapter);
         autoslide();
 
         //handle collection
         collectionAdapter = new CollectionAdapter(getActivity());
         collectionAdapter.setData(collectionArrayList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
         recyclercollect.setLayoutManager(linearLayoutManager);
         recyclercollect.setAdapter(collectionAdapter);
 
@@ -66,24 +67,25 @@ public class Fragment_home extends Fragment {
         itemAdapter = new ItemAdapter(getActivity(), itemArrayList, new IFPickItem() {
             @Override
             public void OnPickItem(Item item) {
-                Intent intent = new Intent(getActivity(),PickItemView.class);
+                Intent intent = new Intent(getActivity(), PickItemView.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", item.getName());
                 bundle.putInt("image", item.getHinhanh());
                 bundle.putString("info", item.getInfor());
                 bundle.putString("price", item.getPrice());
-                intent.putExtras(bundle);
+                intent.putExtra("bundle", bundle);
                 startActivity(intent);
             }
         });
         itemAdapter.notifyDataSetChanged();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recycleritem.setLayoutManager(gridLayoutManager);
         recycleritem.setAdapter(itemAdapter);
         return view;
     }
-    public void initview(@NonNull LayoutInflater inflater, ViewGroup container){
-        view = inflater.inflate(R.layout.fragmenthome,container,false);
+
+    public void initview(@NonNull LayoutInflater inflater, ViewGroup container) {
+        view = inflater.inflate(R.layout.fragmenthome, container, false);
 
         //init banner
         viewPager = view.findViewById(R.id.containerbanner);
@@ -135,8 +137,9 @@ public class Fragment_home extends Fragment {
                 "Mang hương vị biển cả nhẹ nhàng với cá ngừ, thanh cua, hành tây, thơm trên nền xốt Pesto",
                 "$12.04"));
     }
+
     public void autoslide() {
-        if(timer == null){
+        if (timer == null) {
             timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
@@ -155,7 +158,7 @@ public class Fragment_home extends Fragment {
                         }
                     });
                 }
-            },1000 , 5000);
+            }, 1000, 5000);
         }
     }
 }
