@@ -13,6 +13,9 @@ public class Item implements Serializable {
         this.price = price;
     }
 
+    public Item() {
+    }
+
     public int getHinhanh() {
         return hinhanh;
     }
@@ -31,6 +34,14 @@ public class Item implements Serializable {
 
     public String getPrice() {
         return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPrice(String price) {

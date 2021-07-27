@@ -1,12 +1,12 @@
 package com.example.pizza.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.pizza.Adapter.CollectionAdapter;
 import com.example.pizza.Adapter.BannerAdapter;
 import com.example.pizza.Adapter.ItemAdapter;
+import com.example.pizza.Interface.IFPickItem;
 import com.example.pizza.Model.Collection;
 import com.example.pizza.Model.Item;
 import com.example.pizza.R;
@@ -62,8 +63,20 @@ public class Fragment_home extends Fragment {
         recyclercollect.setAdapter(collectionAdapter);
 
         //handle item
-        itemAdapter = new ItemAdapter(getActivity());
-        itemAdapter.setData(itemArrayList);
+        itemAdapter = new ItemAdapter(getActivity(), itemArrayList, new IFPickItem() {
+            @Override
+            public void OnPickItem(Item item) {
+                Intent intent = new Intent(getActivity(),PickItemView.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name", item.getName());
+                bundle.putInt("image", item.getHinhanh());
+                bundle.putString("info", item.getInfor());
+                bundle.putString("price", item.getPrice());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        itemAdapter.notifyDataSetChanged();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recycleritem.setLayoutManager(gridLayoutManager);
         recycleritem.setAdapter(itemAdapter);

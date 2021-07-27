@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pizza.Interface.IFPickItem;
 import com.example.pizza.Model.Item;
 import com.example.pizza.R;
 import com.example.pizza.View.PickItemView;
@@ -22,14 +23,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     Context context;
     List<Item> litem;
+    IFPickItem ifPickItem;
 
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context, List<Item> litem,IFPickItem ifPickItem) {
         this.context = context;
-    }
-
-    public void setData(List<Item> item){
-        this.litem = item;
-        notifyDataSetChanged();
+        this.litem = litem;
+        this.ifPickItem = ifPickItem;
     }
 
     @NonNull
@@ -49,17 +48,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.layoutclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onclickpickitem(item);
+                ifPickItem.OnPickItem(item);
             }
         });
-    }
-
-    void onclickpickitem(Item item){
-        Intent intent = new Intent(context,PickItemView.class);
-        Bundle data =  new Bundle();
-        data.putSerializable("getdata",item);
-        intent.putExtras(data);
-        context.startActivity(intent);
     }
 
     @Override
