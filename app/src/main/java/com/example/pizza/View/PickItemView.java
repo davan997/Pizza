@@ -18,8 +18,10 @@ public class PickItemView extends AppCompatActivity {
 
     ImageView imageView;
     ImageButton back,minus,plus;
-    TextView name,money,infor;
-    EditText numbereach;
+    TextView name,money,infor,numbereach;
+    int numbercurrent = 0;
+    int numbermax = 99;
+    int numbermin = 0;
     Bundle data;
 
     @Override
@@ -30,15 +32,22 @@ public class PickItemView extends AppCompatActivity {
         //handle button back
         back.setOnClickListener(handleback);
 
+
+        //handle button minus and plus
+        minus.setOnClickListener(handleminus);
+        plus.setOnClickListener(handdleplus);
+
         //handle import data
         data = getIntent().getExtras();
         if (data != null){
+            name.setText(data.getString("name"));
+            imageView.setImageResource(data.getInt("image"));
+            infor.setText(data.getString("info"));
+            money.setText(data.getString("price"));
+        } else {
             return;
         }
-        name.setText(data.getString("name"));
-        imageView.setImageResource(data.getInt("image"));
-        infor.setText(data.getString("info"));
-        money.setText(data.getString("price"));
+
     }
     public void initview(){
         imageView = findViewById(R.id.pickitem);
@@ -50,10 +59,35 @@ public class PickItemView extends AppCompatActivity {
         infor = findViewById(R.id.txinfor);
         numbereach = findViewById(R.id.eachpizza);
     }
+
     View.OnClickListener handleback = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             finish();
+        }
+    };
+
+    View.OnClickListener handleminus = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (numbercurrent <= numbermin) {
+                numbercurrent = numbermin;
+            } else {
+                numbercurrent = numbercurrent - 1;
+            }
+            numbereach.setText(""+numbercurrent);
+        }
+    };
+
+    View.OnClickListener handdleplus = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (numbercurrent >= numbermax) {
+                numbercurrent = numbermax;
+            } else {
+                numbercurrent = numbercurrent + 1;
+            }
+            numbereach.setText("" + numbercurrent);
         }
     };
 }
