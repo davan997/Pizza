@@ -43,7 +43,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolderCart
 
         public ViewHolderCart(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.cartimage);
             name = itemView.findViewById(R.id.cartname);
             each = itemView.findViewById(R.id.carteach);

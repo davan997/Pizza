@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
     int hinhanh;
-    String infor,price,name;
+    String infor,price,name,component;
 
-    public Item(String name,int hinhanh, String infor, String price) {
+    public Item(String name,int hinhanh, String infor, String price, String component) {
         this.name = name;
         this.hinhanh = hinhanh;
         this.infor = infor;
         this.price = price;
+        this.component = component;
     }
 
     public Item() {
