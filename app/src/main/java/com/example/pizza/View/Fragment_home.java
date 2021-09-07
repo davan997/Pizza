@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import com.example.pizza.Adapter.CollectionAdapter;
 import com.example.pizza.Adapter.BannerAdapter;
 import com.example.pizza.Adapter.ItemAdapter;
 import com.example.pizza.Interface.IFPickItem;
+import com.example.pizza.MainActivity;
 import com.example.pizza.Model.Collection;
 import com.example.pizza.Model.Item;
 import com.example.pizza.R;
@@ -45,6 +47,7 @@ public class Fragment_home extends Fragment {
     ItemAdapter itemAdapter;
     ArrayList<Item> itemArrayList;
 
+    ImageButton btcart;
     View view;
 
     @Override
@@ -69,11 +72,12 @@ public class Fragment_home extends Fragment {
             public void OnPickItem(Item item) {
                 Intent intent = new Intent(getActivity(), PickItemView.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("name", item.getName());
-                bundle.putInt("image", item.getHinhanh());
-                bundle.putString("info", item.getInfor());
-                bundle.putString("price", item.getPrice());
-                intent.putExtra("bundle", bundle);
+                bundle.putString("name",item.getName());
+                bundle.putInt("image",item.getHinhanh());
+                bundle.putString("infor",item.getInfor());
+                bundle.putString("price",item.getPrice());
+                bundle.putString("componet",item.getComponent());
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -81,6 +85,14 @@ public class Fragment_home extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recycleritem.setLayoutManager(gridLayoutManager);
         recycleritem.setAdapter(itemAdapter);
+
+        //handle btcart
+        btcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return view;
     }
 
@@ -111,37 +123,46 @@ public class Fragment_home extends Fragment {
                 R.drawable.pizza1,
                 "Thanh nhẹ với ô liu đen tuyệt hảo, cà chua bi tươi ngon, nấm, thơm, bắp, bí ngòi và phô mai Mozzarella cho bạn bữa tiệc rau củ tròn vị",
                 "$12.42",
+                "Tôm, cua, mực và bông cải xanh tươi ngon trên nền sốt Pesto Xanh"
                 ));
         itemArrayList.add(new Item(
                 "Pizza Hải Sản Sót Pesto",
                 R.drawable.pizza2,
                 "Pizza Hải Sản Xốt Pesto với hải sản (tôm, mực) nhân đôi cùng với nấm trên nền xốt Pesto đặc trưng, phủ phô mai Mozzarella từ New Zealand và quế tây.",
                 "$18.25",
+                "Tôm, Giăm bông, Đào hoà quyện bùng nổ cùng sốt Thousand Island"
                 ));
         itemArrayList.add(new Item(
                 "Pizza Hải Sản Sốt Tiêu Đen",
                 R.drawable.pizza3,
                 "Tôm, mực và nấm trên nền xốt Pesto đặc trưng, phủ phô mai Mozzarella",
                 "$15.75",
+                "Thịt nguội, xúc xích tiêu cay và dứa hòa quyện với sốt Thousand Island"
                 ));
         itemArrayList.add(new Item(
                 "Pizza Gà Lướng",
                 R.drawable.pizza4,
                 "Tôm, mực, thanh cua, hành tây, thơm phủ xốt tiêu đen thơm nóng và phô mai Mozzarella",
                 "$15.75",
+                "Thịt giăm bông, thịt xông khói và hai loại rau của ớt xanh, cà chua"
                 ));
         itemArrayList.add(new Item(
                 "Pizza Hawaiian",
                 R.drawable.pizza5,
                 "Phủ giăm bông và thơm ngọt dịu trên nền sốt cà chua truyền thống",
                 "$12.04",
+                "Xúc xích lợn và bò đặc trưng của Ý, giăm bông, thịt xông khói"
                 ));
         itemArrayList.add(new Item(
                 "Pizza Cá Ngừ",
                 R.drawable.pizza6,
                 "Mang hương vị biển cả nhẹ nhàng với cá ngừ, thanh cua, hành tây, thơm trên nền xốt Pesto",
                 "$12.04",
+                "Thịt gà mang vị ngọt của dứa kết hợp với vị cay nóng của ớt"
                 ));
+
+        //init button cart
+        btcart = view.findViewById(R.id.btcart);
     }
 
     public void autoslide() {

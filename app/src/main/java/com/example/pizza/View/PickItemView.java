@@ -42,12 +42,11 @@ public class PickItemView extends AppCompatActivity {
         if (data != null){
             name.setText(data.getString("name"));
             imageView.setImageResource(data.getInt("image"));
-            infor.setText(data.getString("info"));
+            infor.setText(data.getString("infor"));
             money.setText(data.getString("price"));
         } else {
             return;
         }
-
     }
     public void initview(){
         imageView = findViewById(R.id.pickitem);

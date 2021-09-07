@@ -12,11 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pizza.Model.Item;
 import com.example.pizza.R;
+
+import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolderCart> {
 
     Context context;
+    List<Item> litem;
+
+
 
     @NonNull
     @Override
@@ -32,6 +38,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolderCart
 
     @Override
     public int getItemCount() {
+        if (litem != null){
+           return litem.size();
+        }
         return 0;
     }
 

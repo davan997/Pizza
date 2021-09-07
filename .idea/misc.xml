@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/drawable/button.xml" value="0.3572916666666667" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/activity_main.xml" value="0.26992753623188404" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/card_view_1.xml" value="0.26766304347826086" />
         <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/cart_view.xml" value="0.27807971014492755" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/fragmentcart.xml" value="0.26992753623188404" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/fragmenthome.xml" value="0.26992753623188404" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/grid_view_2.xml" value="0.276268115942029" />
+        <entry key="..\:/Android_Studio/Pizza/app/src/main/res/layout/pick_item.xml" value="0.276268115942029" />
       </map>
     </option>
   </component>

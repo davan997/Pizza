@@ -5,4 +5,7 @@
     <string name="cart">Giỏ Hàng</string>
     <string name="notification">Thông Báo</string>
     <string name="personal">Cá Nhân</string>
+    <string name="checkout">Thanh Toán</string>
+    <string name="titlecart">My Cart Item</string>
+    <string name="blackline">_________________________________________</string>
 </resources>

@@ -82,13 +82,14 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclevcollect"
-            android:numColumns="4"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/seeall1"
             android:layout_width="wrap_content"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_below="@+id/seeall1"
+            android:layout_marginTop="10dp"
+            android:numColumns="4" />
         <TextView
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"

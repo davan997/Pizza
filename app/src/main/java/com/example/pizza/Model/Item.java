@@ -48,4 +48,12 @@ public class Item implements Serializable {
     public void setPrice(String price) {
         this.price = price;
     }
+
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
 }
