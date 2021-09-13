@@ -2,17 +2,18 @@ package com.example.pizza.View;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pizza.Model.Item;
 import com.example.pizza.R;
-
 
 public class PickItemView extends AppCompatActivity {
 
@@ -21,7 +22,8 @@ public class PickItemView extends AppCompatActivity {
     TextView name,money,infor,numbereach;
     int numbercurrent = 0;
     int numbermax = 99;
-    int numbermin = 0;
+    int numbermin = 1;
+    Button addtocart;
     Bundle data;
 
     @Override
@@ -29,13 +31,12 @@ public class PickItemView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pick_item);
         initview();
-        //handle button back
+
+        //handle button
         back.setOnClickListener(handleback);
-
-
-        //handle button minus and plus
         minus.setOnClickListener(handleminus);
-        plus.setOnClickListener(handdleplus);
+        plus.setOnClickListener(handleplus);
+        addtocart.setOnClickListener(handleaddtocart);
 
         //handle import data
         data = getIntent().getExtras();
@@ -57,6 +58,7 @@ public class PickItemView extends AppCompatActivity {
         money =  findViewById(R.id.txprice);
         infor = findViewById(R.id.txinfor);
         numbereach = findViewById(R.id.eachpizza);
+        addtocart = findViewById(R.id.addtocart);
     }
 
     View.OnClickListener handleback = new View.OnClickListener() {
@@ -65,7 +67,6 @@ public class PickItemView extends AppCompatActivity {
             finish();
         }
     };
-
     View.OnClickListener handleminus = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -74,11 +75,10 @@ public class PickItemView extends AppCompatActivity {
             } else {
                 numbercurrent = numbercurrent - 1;
             }
-            numbereach.setText(""+numbercurrent);
+            numbereach.setText("" + numbercurrent);
         }
     };
-
-    View.OnClickListener handdleplus = new View.OnClickListener() {
+    View.OnClickListener handleplus = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (numbercurrent >= numbermax) {
@@ -87,6 +87,19 @@ public class PickItemView extends AppCompatActivity {
                 numbercurrent = numbercurrent + 1;
             }
             numbereach.setText("" + numbercurrent);
+        }
+    };
+    View.OnClickListener handleaddtocart = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(numbercurrent == 0)
+            {
+                Toast.makeText(PickItemView.this, "Bạn Hãy Thêm Số Sản Phẩm", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+
+            }
         }
     };
 }
